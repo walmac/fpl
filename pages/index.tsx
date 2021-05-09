@@ -392,7 +392,7 @@ export default function Home() {
     var bytes = new Uint8Array(pdfBytes);
     var blob = new Blob([bytes], { type: "application/pdf" });
     const docUrl = URL.createObjectURL(blob);
-    fpl = <iframe title="test-frame" key={docUrl} src={docUrl} ref={viewer} type="application/pdf" />;
+    
     console.log(fpl);
     download(pdfBytes, "pdf-lib_modification_example.pdf", "application/pdf"); 
 
