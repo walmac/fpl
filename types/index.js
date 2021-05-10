@@ -1,0 +1,1 @@
+export const PDF_FILE = 'PDF_FILE';

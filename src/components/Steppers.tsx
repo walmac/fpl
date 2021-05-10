@@ -23,7 +23,7 @@ export const PreviousButton = (props) => {
   }
 
   return (
-    <Button size="sm" onClick={form.prevStep} colorScheme="brand2" variant="ghost" {...props}>
+    <Button size="sm" onClick={form.prevStep} colorScheme="brand" variant="ghost" {...props}>
       Anterior
     </Button>
   );
@@ -42,7 +42,7 @@ export const NextButton = (props) => {
       }
       {...props}
     >
-      {form.isLastStep ? 'Enviar' : 'Siguiente'}
+      {form.isLastStep ? 'Terminar' : 'Siguiente'}
     </Button>
   );
 };
@@ -50,7 +50,7 @@ export const NextButton = (props) => {
 export const StepperWrapper = ({ title, children, ...rest }) => (
   <Stack {...rest}>
     {title && <Heading fontSize="md">{title}</Heading>}
-    <Box bg="gray.50" p="4" borderRadius="md">
+    <Box bg="gray.500" p="2" borderRadius="md">
       <Grid templateColumns="1fr 2fr 1fr" alignItems="center">
         <Box>
           <PreviousButton />
@@ -76,7 +76,7 @@ export const SimpleStepper = (props) => {
 
 export const DotsStepper = (props) => {
   const form = useForm({ subscribe: 'form' });
-  const spacing = 4;
+  const spacing = 2;
 
   return (
     <Stack

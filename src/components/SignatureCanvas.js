@@ -1,33 +1,45 @@
 import React, { useState, useRef, useEffect } from "react";
 import ReactDOM from "react-dom";
 import SignaturePad from "react-signature-canvas";
-import {  Button} from "@chakra-ui/react";
-import { useField } from '@formiz/core';
-import { FormGroup } from '../FormGroup';
+import { Button } from "@chakra-ui/react";
+import { useField } from "@formiz/core";
+import { FormGroup } from "../FormGroup";
 
 const SignatureCanvas = (props) => {
-    const [trimmedDataURL, settrimmedDataURL] = useState('');
-    const sigPad = useRef({});
-    const {
-        errorMessage,
-        id,
-        isValid,
-        isSubmitted,
-        isValidating,
-        resetKey,
-        setValue,
-        value,
-        otherProps,
-      } = useField(props);
-      const { required, name } = props;
+  const [trimmedDataURL, settrimmedDataURL] = useState("");
+  const sigPad = useRef({});
+  let win =false;
   const {
-    children, label, type, placeholder, helper, ...rest
-  } = otherProps;
+    errorMessage,
+    id,
+    isValid,
+    isSubmitted,
+    isValidating,
+    resetKey,
+    setValue,
+    value,
+    otherProps,
+  } = useField(props);
+  const { required, name } = props;
+  const { children, label, type, placeholder, helper, ...rest } = otherProps;
   const [isTouched, setIsTouched] = useState(false);
   const showError = !isValid && (isTouched || isSubmitted);
   useEffect(() => {
     setIsTouched(false);
   }, [resetKey]);
+  useEffect(() => {
+    let canvas = sigPad.current.getCanvas();
+   
+    if (window.innerWidth > 768) {
+      canvas.setAttribute("width", "350");
+      canvas.setAttribute("height", "200");
+    }else{
+      canvas.setAttribute("width", "300");
+      canvas.setAttribute("height", "300");
+      win= true
+    }
+  }, []);
+  
 
   const formGroupProps = {
     errorMessage,
@@ -40,51 +52,61 @@ const SignatureCanvas = (props) => {
     ...rest,
   };
 
+  const clear = () => {
+    sigPad.current.clear();
+    settrimmedDataURL("");
+    let canvas = sigPad.current.getCanvas();
+    if (window.innerWidth > 768) {
+      canvas.setAttribute("width", "350");
+      canvas.setAttribute("height", "200");
+    }else{
+      canvas.setAttribute("width", "300");
+      canvas.setAttribute("height", "300");
+    }
+  };
+
+  const trim = () => {
+    console.log(sigPad.current);
+    if (!sigPad.current.isEmpty()) {
+      settrimmedDataURL(
+        sigPad.current.getTrimmedCanvas().toDataURL("image/png")
+      );
+      setValue(trimmedDataURL);
+      console.log(value);
+    }
+  };
+  const activar = () => {
+    let canvas = sigPad.current.getCanvas();
+    if (window.innerWidth > 768) {
+      canvas.setAttribute("width", "350");
+      canvas.setAttribute("height", "200");
+    }else{
+      canvas.setAttribute("width", "300");
+      canvas.setAttribute("height", "300");
+    }
+    
+  }
   
-
-    const clear = () => {
-        sigPad.current.clear();
-    }
-
-    const trim = () => {
-        if(!sigPad.current.isEmpty()){
-            settrimmedDataURL(sigPad.current.getTrimmedCanvas().toDataURL("image/png"));
-            setValue(trimmedDataURL);
-            console.log(value);
-        }
-       
-
-    }
-    
-    
 
   return (
     <FormGroup {...formGroupProps}>
-      
-      <div style={{width: '80%', height: '80%'}} >
-        <div style={{width: '100%,' ,height: '100%'}}>
-          <SignaturePad ref={sigPad}
+      <div>
+        <div>
+          <SignaturePad
+            ref={sigPad}
             canvasProps={{
-            className: "signatureCanvas"
-          }}    
+              className: "signatureCanvas",
+            }}
           />
         </div>
         <div>
-          <Button  onClick={() => clear()}>
-            Limpiar
-          </Button>
-          <Button  onClick={() => trim()}>
-            Listo
-          </Button>
+          <Button style={{marginTop: 6}}onClick={() => clear()}>Limpiar</Button>
+          <Button style={{marginTop: 6, marginLeft:6}}onClick={() => trim()}>Listo</Button>
+          <h1>Si el cuadro de firma no aparece apretar limpiar, si al terminar no sucede nada, pulsar otra vez listo</h1>
         </div>
-        {trimmedDataURL ? (
-          <img  src={trimmedDataURL} style={{
-            display: "block",
-            margin: "0 auto",
-            border: "1px solid black",
-            width: "150px"
-          }}/>
-        ) : null}
+        <div style={{marginTop: 4}}>
+          {trimmedDataURL ? <img src={trimmedDataURL} /> : null}
+        </div>
       </div>
       {children}
     </FormGroup>
@@ -92,5 +114,3 @@ const SignatureCanvas = (props) => {
 };
 
 export default SignatureCanvas;
-
-

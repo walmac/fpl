@@ -851,6 +851,11 @@
     prop-types "^15.7.2"
     tslib "^2.1.0"
 
+"@react-pdf-viewer/core@^2.4.2":
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/@react-pdf-viewer/core/-/core-2.4.2.tgz#cd69d1bc23fa25b4029c65c671834e525e55d1f0"
+  integrity sha512-UZWyyvGAtmHBWYPeuTO7pEgnPKJAuOwXRIhEN912y1fuzf5aIdT3uLgmokLFEkbLnsB1ytdzpnP26ywuN5DnTA==
+
 "@types/lodash.mergewith@4.6.6":
   version "4.6.6"
   resolved "https://registry.yarnpkg.com/@types/lodash.mergewith/-/lodash.mergewith-4.6.6.tgz#c4698f5b214a433ff35cb2c75ee6ec7f99d79f10"
@@ -2298,6 +2303,11 @@ pdf-lib@^1.16.0:
     "@pdf-lib/upng" "^1.0.1"
     pako "^1.0.11"
     tslib "^1.11.1"
+
+pdfjs-dist@2.6.347:
+  version "2.6.347"
+  resolved "https://registry.yarnpkg.com/pdfjs-dist/-/pdfjs-dist-2.6.347.tgz#f257ed66e83be900cd0fd28524a2187fb9e25cd5"
+  integrity sha512-QC+h7hG2su9v/nU1wEI3SnpPIrqJODL7GTDFvR74ANKGq1AFJW16PH8VWnhpiTi9YcLSFV9xLeWSgq+ckHLdVQ==
 
 picomatch@^2.0.4, picomatch@^2.2.1:
   version "2.2.3"

@@ -54,7 +54,7 @@ export const CheckSurvival = (props) => {
   return (
     <FormGroup {...formGroupProps}>
       
-      <CheckboxGroup colorScheme="green" onChange={(e) => checkChecks (e)}>
+      <CheckboxGroup colorScheme="gray" onChange={(e) => checkChecks (e)}>
         <HStack>
           <Checkbox value="P">POLAR</Checkbox>
           <Checkbox value="D">DESERTICO</Checkbox>

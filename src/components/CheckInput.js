@@ -54,7 +54,7 @@ export const CheckInput = (props) => {
   return (
     <FormGroup {...formGroupProps}>
       
-      <CheckboxGroup colorScheme="green" onChange={(e) => checkChecks (e)}>
+      <CheckboxGroup colorScheme="gray" onChange={(e) => checkChecks (e)}>
         <HStack>
           <Checkbox value="U">UHF</Checkbox>
           <Checkbox value="V">VHF</Checkbox>

@@ -54,7 +54,7 @@ export const CheckJackets = (props) => {
   return (
     <FormGroup {...formGroupProps}>
       
-      <CheckboxGroup colorScheme="green" onChange={(e) => checkChecks(e)}>
+      <CheckboxGroup colorScheme="gray" onChange={(e) => checkChecks(e)}>
         <HStack>
           <Checkbox value="L">LUZ</Checkbox>
           <Checkbox value="F">FLUOR</Checkbox>
