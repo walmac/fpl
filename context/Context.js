@@ -9,13 +9,16 @@ const ContextProvider = (props) => {
 
     const [pdf, setPdf] = useState('');
     const [callsign, setCallsign] = useState('');
+    const [blob, setBlob] = useState('');
     return (
         <FplContext.Provider
             value={{
                 pdf,
                 callsign,
+                blob,
                 setPdf,
-                setCallsign
+                setCallsign,
+                setBlob
             }}
         >
            {props.children}

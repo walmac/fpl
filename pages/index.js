@@ -24,7 +24,7 @@ import SignatureCanvas from '../src/components/SignatureCanvas';
 export default function Home() {
   const { colorMode, toggleColorMode } = useColorMode();
 
-  const {setPdf, setCallsign} = useContext(FplContext);
+  const {setPdf, setCallsign, setBlob} = useContext(FplContext);
   const myForm = useForm();
   const router = useRouter();
   
@@ -553,6 +553,8 @@ export default function Home() {
     
 
     setPdf(bytes);
+    setBlob(docUrl);
+
     setCallsign(values.Matricula);
     console.log(docUrl);
     console.log(bytes);
@@ -604,9 +606,9 @@ export default function Home() {
         
 
       </Grid>
-      {/* <Button onClick={() => createFPL(fpl)}>
+      <Button onClick={() => createFPL(fpl)}>
         FPL
-      </Button> */}
+      </Button>
       
      {!bytes ? (
         <Formiz connect={myForm} onValidSubmit={handleSubmit}>

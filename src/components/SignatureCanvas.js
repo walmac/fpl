@@ -28,16 +28,16 @@ const SignatureCanvas = (props) => {
     setIsTouched(false);
   }, [resetKey]);
   useEffect(() => {
-    let canvas = sigPad.current.getCanvas();
+    /* let canvas = sigPad.current.getCanvas();
    
     if (window.innerWidth > 768) {
       canvas.setAttribute("width", "350");
       canvas.setAttribute("height", "200");
     }else{
-      canvas.setAttribute("width", "300");
-      canvas.setAttribute("height", "300");
-      win= true
-    }
+      canvas.setAttribute("width", "100%");
+      canvas.setAttribute("height", "200");
+     
+    } */
   }, []);
   
 
@@ -56,13 +56,13 @@ const SignatureCanvas = (props) => {
     sigPad.current.clear();
     settrimmedDataURL("");
     let canvas = sigPad.current.getCanvas();
-    if (window.innerWidth > 768) {
+    /* if (window.innerWidth > 768) {
       canvas.setAttribute("width", "350");
       canvas.setAttribute("height", "200");
     }else{
       canvas.setAttribute("width", "300");
       canvas.setAttribute("height", "300");
-    }
+    } */
   };
 
   const trim = () => {
@@ -78,11 +78,11 @@ const SignatureCanvas = (props) => {
   const activar = () => {
     let canvas = sigPad.current.getCanvas();
     if (window.innerWidth > 768) {
+      canvas.setAttribute("width", "450");
+      canvas.setAttribute("height", "300");
+    }else{
       canvas.setAttribute("width", "350");
       canvas.setAttribute("height", "200");
-    }else{
-      canvas.setAttribute("width", "300");
-      canvas.setAttribute("height", "300");
     }
     
   }
@@ -94,9 +94,11 @@ const SignatureCanvas = (props) => {
         <div>
           <SignaturePad
             ref={sigPad}
-            canvasProps={{
+            /* canvasProps={{
               className: "signatureCanvas",
-            }}
+            }} */
+            canvasProps={{width: 500, height: 200, className: 'sigCanvas'}}
+            clearOnResize={false}
           />
         </div>
         <div>

@@ -15,16 +15,21 @@
     "@formiz/core": "^1.0.3",
     "@formiz/validations": "^1.0.0",
     "@react-pdf-viewer/core": "^2.4.2",
+    "@react-pdf-viewer/get-file": "^2.4.3",
     "axios": "^0.21.1",
     "framer-motion": "^4.1.13",
     "next": "10.2.0",
     "pdf-lib": "^1.16.0",
     "pdfjs-dist": "2.6.347",
+    "precise-ui": "^1.5.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.2.0",
-    "react-signature-canvas": "^1.0.3"
+    "react-signature-canvas": "^1.0.3",
+    "react-view-pdf": "^0.1.2",
+    "reactjs-pdf-reader": "^1.0.12",
+    "styled-components": "^5.3.0"
   },
   "devDependencies": {
     "typescript": "^4.2.4"

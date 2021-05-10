@@ -10,11 +10,13 @@ const ContextState = (props) => {
     }
 
     const [pdf, setPdf] = useState('');
+    const [blob, setBlob] = useState('');
     return (
         <Context.Provider
             value={{
                 pdf,
                 setPdf,
+                setBlob
             }}
         >
            {props.children}
