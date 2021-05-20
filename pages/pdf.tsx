@@ -27,7 +27,7 @@ import {
 } from "@chakra-ui/react";
 import { FieldInput } from "../src/components/FieldInput";
 import { Formiz, useForm, FormizStep } from "@formiz/core";
-import clienteAxios from "../../config/axios";
+import clienteAxios from "../config/axios";
 
 
 const urlMail = "/api/mail";
