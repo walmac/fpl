@@ -4,7 +4,10 @@ export const FplContext = createContext();
 
 const ContextProvider = (props) => {
     const initialState={
-        pdf: ''
+        pdf: '',
+        acft: '',
+        emergenciaCheck:false,
+        
     }
 
     const [pdf, setPdf] = useState('');
@@ -12,6 +15,9 @@ const ContextProvider = (props) => {
     const [blob, setBlob] = useState('');
     const [bytes, setBytes] = useState('');
     const [values, setValues] = useState('');
+    const [acft, setAcft] = useState('');
+    const [emergenciaCheck, setEmergenciaCheck] = useState(false);
+    
     return (
         <FplContext.Provider
             value={{
@@ -20,11 +26,15 @@ const ContextProvider = (props) => {
                 blob,
                 bytes,
                 values,
+                acft,
+                emergenciaCheck,
                 setPdf,
                 setCallsign,
                 setBlob,
                 setBytes,
-                setValues
+                setValues,
+                setAcft,
+                setEmergenciaCheck,
             }}
         >
            {props.children}

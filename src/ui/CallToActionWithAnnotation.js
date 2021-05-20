@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import React , {useContext, useEffect} from 'react';
 import {
   Box,
   Heading,
@@ -11,8 +12,18 @@ import {
   createIcon,
   Link
 } from '@chakra-ui/react';
+let log = false;
+
+import authContext from "../../context/auth/authContext";
 
 export default function CallToActionWithAnnotation() {
+
+  const AuthContext = useContext(authContext);
+  const {  usuarioAutenticado, usuario} = AuthContext;
+
+  useEffect(() => {
+   usuarioAutenticado();
+  }, [])
   return (
     <>
       <Head>
@@ -20,66 +31,118 @@ export default function CallToActionWithAnnotation() {
           href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap"
           rel="stylesheet"
         />
+        <script data-ad-client="ca-pub-9578188952571749" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       </Head>
 
-      <Container maxW={'3xl'}>
-        <Stack
-          as={Box}
-          textAlign={'center'}
-          spacing={{ base: 8, md: 14 }}
-          py={{ base: 10, md: 36 }}>
-          <Heading
-            fontWeight={600}
-            fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
-            lineHeight={'110%'}>
-            Hace el Plan de vuelo <br />
-            <Text as={'span'} color={'gray.500'}>
-            desde  esta app
-            </Text>
-          </Heading>
-          <Text color={'gray.500'}>
-            Es muy facil, desde el boton FPL arriba a la derecha podes llenar todos los datos del FPL y al final tendras un formulario hecho en un PDF listo para enviar. Podes tambien hacer una cuenta, guardar tus datos y ACFTs que volas frecuentemente para habilitar un prellenado del FPL con dichos datos
-          </Text>
-          <Stack
-            direction={'column'}
-            spacing={3}
-            align={'center'}
-            alignSelf={'center'}
-            position={'relative'}>
-            <Link
-              href={'/signin'}
-              _hover={{
-                textDecoration: 'none',
-                
-              }}
-              props={true}
-              rounded={'md'}
-              passHref>
-                <Button
-                colorScheme={'green'}
-                bg={'gray.400'}
-                rounded={'full'}
-                px={6}
-                _hover={{
-                    bg: 'gray.500',
-                }}>
-                Empezar
-                </Button>
-            </Link>
-            <Box>
-              <Icon
-                as={Arrow}
-                color={useColorModeValue('gray.800', 'gray.300')}
-                w={71}
-                position={'absolute'}
-                right={-71}
-                top={'10px'}
-              />
+      {usuario ? 
+        (
+            
+            <Stack
+            as={Box}
+            textAlign={'center'}
+            spacing={{ base: 8, md: 14 }}
+            py={{ base: 10, md: 22 }}>
               
-            </Box>
-          </Stack>
-        </Stack>
-      </Container>
+            <Heading
+              fontWeight={600}
+              fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
+              lineHeight={'110%'}>
+              
+              <Text as={'span'} color={'gray.500'}>
+              Hola {usuario.nombre} 
+              </Text>
+            </Heading>
+            <Link
+                  href={'/pre'}
+                  _hover={{
+                    textDecoration: 'none',
+                    
+                  }}
+                  props={log}
+                  rounded={'md'}
+                  passhref>
+                    <Button
+                    colorScheme={'green'}
+                    bg={'gray.400'}
+                    rounded={'full'}
+                    px={6}
+                    _hover={{
+                        bg: 'gray.500',
+                    }}>
+                    Rellenar un Fpl con los datos pre cargados
+                    </Button>
+                </Link>
+            
+            </Stack>
+        )
+        : 
+      
+        (
+          <>
+            <Container maxW={'3xl'}>
+            
+                  
+            <Stack
+              as={Box}
+              textAlign={'center'}
+              spacing={{ base: 8, md: 14 }}
+              py={{ base: 10, md: 36 }}>
+                
+              <Heading
+                fontWeight={600}
+                fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
+                lineHeight={'110%'}>
+                Hace el Plan de vuelo <br />
+                <Text as={'span'} color={'gray.500'}>
+                con esta app
+                </Text>
+              </Heading>
+              <Text color={'gray.500'}>
+                Es muy facil, desde el boton FPL arriba a la derecha podes llenar todos los datos del FPL y al final tendras un formulario hecho en un PDF listo para enviar. Podes tambien hacer una cuenta, guardar tus datos y ACFTs que volas frecuentemente para habilitar un prellenado del FPL con dichos datos
+              </Text>
+              <Stack
+                direction={'column'}
+                spacing={3}
+                align={'center'}
+                alignSelf={'center'}
+                position={'relative'}>
+                <Link
+                  href={'/signin'}
+                  _hover={{
+                    textDecoration: 'none',
+                    
+                  }}
+                  props={log}
+                  rounded={'md'}
+                  passhref>
+                    <Button
+                    colorScheme={'green'}
+                    bg={'gray.400'}
+                    rounded={'full'}
+                    px={6}
+                    _hover={{
+                        bg: 'gray.500',
+                    }}>
+                    Empezar
+                    </Button>
+                </Link>
+                <Box>
+                  <Icon
+                    as={Arrow}
+                    color={useColorModeValue('gray.800', 'gray.300')}
+                    w={71}
+                    position={'absolute'}
+                    right={-71}
+                    top={'10px'}
+                  />
+                  
+                  </Box>
+                </Stack>
+              </Stack>
+            </Container>
+          </>
+        )
+      }
     </>
   );
 }

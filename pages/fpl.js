@@ -14,6 +14,7 @@ import {
   Box,
   Switch,
   Button,
+  Container,
 } from "@chakra-ui/react";
 import { ExternalLinkIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 
@@ -29,11 +30,8 @@ import SignatureCanvas from "../src/components/SignatureCanvas";
 
 const Fpl = () => {
 
-
-  
-
   const { setPdf, setCallsign, setBlob, setBytes, setValues } =
-    useContext(FplContext);
+  useContext(FplContext);
   const myForm = useForm();
   const router = useRouter();
 
@@ -608,8 +606,8 @@ const Fpl = () => {
     });
     const pngImage = await pdfDoc.embedPng(values.firma);
     firstPage.drawImage(pngImage, {
-      x: 100,
-      y: 40,
+      x: 375,
+      y: 50,
       width: 50,
       height: 50,
     });
@@ -622,7 +620,7 @@ const Fpl = () => {
     let blob = new Blob([bytes], { type: "application/pdf" });
     docUrl = URL.createObjectURL(blob);
 
-    setValues(values);
+   
     setPdf(bytes);
     setBlob(docUrl);
     setBytes(base64String);
@@ -643,7 +641,7 @@ const Fpl = () => {
   const mandaFpl = () => {
     console.log('entro');
     setSending(true);
-    setValues(fpl);
+    
     createFPL(fpl);
   };
 
@@ -659,6 +657,7 @@ const Fpl = () => {
         
         
       </Grid>
+      <Container maxW={'3xl'}>
       
       <Stack>
       {!sending ?<Button  onClick={() => mandaFpl()}>FPL</Button> : 
@@ -847,6 +846,7 @@ const Fpl = () => {
           <h1>anduvo?</h1>
         </>
       )}
+      </Container>
     </>
   );
 }

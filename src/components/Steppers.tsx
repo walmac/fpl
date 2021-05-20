@@ -23,7 +23,7 @@ export const PreviousButton = (props) => {
   }
 
   return (
-    <Button size="sm" onClick={form.prevStep} colorScheme="brand" variant="ghost" {...props}>
+    <Button size="sm" p="1"onClick={form.prevStep} colorScheme="brand" variant="ghost" {...props}>
       Anterior
     </Button>
   );
@@ -36,6 +36,7 @@ export const NextButton = (props) => {
       type="submit"
       size="sm"
       colorScheme="brand"
+      p="1"
       isDisabled={
         (form.isLastStep ? !form.isValid : !form.isStepValid)
         && form.isStepSubmitted
