@@ -660,7 +660,7 @@ const Fpl = () => {
       <Container maxW={'3xl'}>
       
       <Stack>
-      {!sending ?<Button  onClick={() => mandaFpl()}>FPL</Button> : 
+      {/* {!sending ?<Button  onClick={() => mandaFpl()}>FPL</Button> : 
         <Button
           isLoading
           
@@ -671,7 +671,7 @@ const Fpl = () => {
         </Button>
           
           
-        }
+        } */}
         
         
         
