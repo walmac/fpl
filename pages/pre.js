@@ -81,6 +81,12 @@ const Pre = (props) => {
                 console.log('entro');
             }
         });
+        if(aeronave === undefined){
+          aeronave= acft;
+          
+          console.log(aeronave);
+          params.matricula = aeronave.matricula;
+        }
         params.botes = aeronave.botes;
         params.capacidad = aeronave.capacidad;
         params.chalecos = aeronave.chalecos;
@@ -96,6 +102,7 @@ const Pre = (props) => {
         params.numero = '1';      
         console.log(aeronave);
         console.log(params);
+        console.log(acft);
         createFpl(params);
        
     }
@@ -626,7 +633,7 @@ const Pre = (props) => {
         });
         const pngImage = await pdfDoc.embedPng(values.firma);
         firstPage.drawImage(pngImage, {
-          x: 375,
+          x: 385,
           y: 50,
           width: 50,
           height: 50,

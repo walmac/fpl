@@ -606,7 +606,7 @@ const Fpl = () => {
     });
     const pngImage = await pdfDoc.embedPng(values.firma);
     firstPage.drawImage(pngImage, {
-      x: 375,
+      x: 385,
       y: 50,
       width: 50,
       height: 50,

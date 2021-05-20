@@ -214,7 +214,7 @@ const PdfView = (props) => {
                 </Download>
             </div> */}
 
-            <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js">
+            {/* <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js">
               <div
                 style={{
                   border: "1px solid rgba(0, 0, 0, 0.3)",
@@ -228,7 +228,9 @@ const PdfView = (props) => {
                   plugins={[getFilePluginInstance]}
                 />
               </div>
-            </Worker>
+            </Worker> */}
+            <PDFReader data={pdf}/>
+            {/* <PDFViewer url={blob} /> */}
           </>
         ) : (
           <h1>Se debe terminar el plan de vuelo primero</h1>
