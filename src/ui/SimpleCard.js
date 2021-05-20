@@ -30,7 +30,7 @@ export default function SimpleCard({ props }) {
 
   useEffect(() => {
     if(autenticado){
-      router.push('/pre');
+      router.push('/');
     }
   }, [autenticado])
   useEffect(() => {

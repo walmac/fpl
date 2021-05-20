@@ -65,13 +65,13 @@ const SignatureCanvas = (props) => {
     } */
   };
 
-  const trim = () => {
+  const trim = async () => {
     console.log(sigPad.current);
     if (!sigPad.current.isEmpty()) {
-      settrimmedDataURL(
+    /*   await settrimmedDataURL(
         sigPad.current.getTrimmedCanvas().toDataURL("image/png")
-      );
-      setValue(trimmedDataURL);
+      ); */
+      setValue(sigPad.current.getTrimmedCanvas().toDataURL("image/png"));
       console.log(value);
     }
   };
@@ -107,7 +107,7 @@ const SignatureCanvas = (props) => {
           <h1>Si el cuadro de firma no aparece apretar limpiar, si al terminar no sucede nada, pulsar otra vez listo</h1>
         </div>
         <div style={{marginTop: 4}}>
-          {trimmedDataURL ? <img src={trimmedDataURL} /> : null}
+          {value ? <img src={value} /> : null}
         </div>
       </div>
       {children}
