@@ -1,7 +1,7 @@
 const axios = require('axios').default;
 
 const clienteAxios = axios.create({
-    baseURL:process.env.backendURL
+    baseURL:'https://fpldigital.herokuapp.com'
 });
 
 export default clienteAxios;
