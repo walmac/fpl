@@ -5,6 +5,9 @@ import { Formiz, useForm, FormizStep } from "@formiz/core";
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
 
 import { FplContext } from "../context/Context";
+import AuthContext from '../context/auth/authContext';
+
+import Alert from '../src/components/Alert'
 
 import {
   Stack,
@@ -32,6 +35,7 @@ const Fpl = () => {
 
   const { setPdf, setCallsign, setBlob, setBytes, setValues } =
   useContext(FplContext);
+  const { mensaje, setMensaje} =useContext(AuthContext);
   const myForm = useForm();
   const router = useRouter();
 
@@ -620,7 +624,7 @@ const Fpl = () => {
     let blob = new Blob([bytes], { type: "application/pdf" });
     docUrl = URL.createObjectURL(blob);
 
-   
+    setMensaje('Generando PDF....');
     setPdf(bytes);
     setBlob(docUrl);
     setBytes(base64String);
@@ -833,7 +837,7 @@ const Fpl = () => {
                 required="La firma es obligatoria"
               />
             </FormizStep>
-
+                {mensaje && <Alert />}
             <Stack spacing="6" mt="8">
               <StepperWrapper title="Pasos">
                 <DotsStepper />

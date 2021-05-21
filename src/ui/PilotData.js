@@ -18,12 +18,14 @@ import authContext from "../../context/auth/authContext";
 import { Formiz, useForm } from "@formiz/core";
 import { FieldInput } from "../components/FieldInput";
 import { isNotEmptyString } from "@formiz/validations";
+import {useRouter} from 'next/router';
 
 import Alerta from '../components/Alert'
 
 const PilotData = () => {
   const AuthContext = useContext(authContext);
   const { autenticado, mensaje, usuario, agregaDatos, setMensaje, obtenerDatos, datos } =AuthContext;
+  const router = useRouter();
   const formizForm= useForm();
   let initial = '';
   useEffect(() => {
@@ -50,6 +52,11 @@ const PilotData = () => {
          setMensaje('Los campos no pueden estar vacios')
       }
     agregaDatos(values);
+    setTimeout(() => {
+      router.push('/ACFTEdit');
+    }, 2000);
+    
+
   };
 
   return (
@@ -62,10 +69,18 @@ const PilotData = () => {
           textAlign='center'
         >
           {/* <h3>Hola{usuario.nombre},</h3> */}
+          {datos ?  
+            <Text as={"span"} color={"gray.500"}>
+              Actualiza tus datos
+            </Text>
+          : 
+            <Text as={"span"} color={"gray.500"}>
+              Llena tus datos y luego agregá una ACFT para poder autocompletar el fpl
+            </Text>
+          
+          }
 
-          <Text as={"span"} color={"gray.500"}>
-            Aca podés llenar tus datos para poder autocompletar el FPL
-          </Text>
+          
         </Heading>
         <Formiz connect={formizForm} onValidSubmit={enviaDatos}  initialValues={initial !== '' ? initial: null}>
           <form noValidate onSubmit={formizForm.submit}>
@@ -106,13 +121,24 @@ const PilotData = () => {
             
 
             
-            { initial !== null ? 
-                <Button mt="10" type="submit" disabled={!formizForm.isValid}>
-                    Actualizar Datos
+            { datos ? 
+                <Button mt="10" type="submit" disabled={!formizForm.isValid} bg={'gray.500'}
+                rounded={'full'}
+                px={4}
+                _hover={{
+                    bg: 'gray.600',
+                }}>
+                    Actualizar Datos e ir auto completar FPL
                 </Button>:
-                <Button mt="10" type="submit" disabled={!formizForm.isValid}>
-                    Enviar Datos
-                </Button>
+                <Button mt="10" type="submit" disabled={!formizForm.isValid}
+                bg={'gray.500'}
+                rounded={'full'}
+                px={4}
+                _hover={{
+                    bg: 'gray.600',
+                }}>
+                Enviar Datos
+            </Button>
                 }
           </form>
         </Formiz>

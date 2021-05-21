@@ -669,130 +669,220 @@ const Pre = (props) => {
     const myForm = useForm();
     return ( 
         <>
+        
             {autenticado ? (
+              <Container maxW={"3xl"}>
                 <>
-                <Container maxW={"3xl"}>
-                
-                    <Formiz connect={myForm} onValidSubmit={handleSubmit}>
-                         <form noValidate onSubmit={myForm.submitStep}>
-                            <FormizStep
-                                name="step1" // Split the form with FormizStep
-                            >
-                                
-                                {acft ? 
-                                    <>
-                                        <Box>
-                                            <label>ACFT: </label>
-                                            <label>{acft.matricula}</label>
-                                        </Box>
-                                    </>
-                                    :
-                                    <FieldSelect
-                                        name="matricula"
-                                        label="Elegi una ACFT"
-                                        placeholder="Elegi una Acft"
-                                        required="Requerido"
-                                        keepValue
-                                        acfts={datosAcfts}
-                                        
-                                    />
-
-                                }
-                                <FieldSelect
-                                    name="reglas"
-                                    label="Reglas de Vuelo"
-                                    placeholder="Elegir Reglas"
-                                    required="Requerido"
-                                    keepValue
-                                    options={[
-                                    { value: "I", label: "IFR" },
-                                    { value: "V", label: "VFR" },
-                                    { value: "Y", label: "Y" },
-                                    { value: "Z", label: "Z" },
-                                    ]}
-                                />
-                                <FieldSelect
-                                    name="tipo"
-                                    label="Tipo de Vuelo"
-                                    placeholder="Elegir Tipo de vuelo"
-                                    required="Requerido"
-                                    keepValue
-                                    options={[
-                                    { value: "S", label: "S" },
-                                    { value: "N", label: "N" },
-                                    { value: "M", label: "M" },
-                                    { value: "G", label: "G" },
-                                    { value: "X", label: "X" },
-                                    ]}
-                                />
-                                
-                                <FieldInput
-                                    name="salida"
-                                    label="Aeropuerto de salida"
-                                    required="Obligatorio"
-                                />
-                                <FieldInput
-                                    name="hora"
-                                    label="Hora de salida"
-                                    required="Obligatorio"
-                                />
-                                <FieldInput
-                                    name="nivel"
-                                    label="Nivel de vuelo"
-                                    required="Obligatorio"
-                                />
-                                </FormizStep>
-                                <FormizStep name="step2">
-                                <FieldInput name="ruta" label="Ruta" required="Obligatorio" />
-                                <FieldInput
-                                    name="destino"
-                                    label="Destino"
-                                    required="Obligatorio"
-                                />
-                                <FieldInput name="eet" label="Total EET" required="Obligatorio" />
-                                <FieldInput
-                                    name="alternativa1"
-                                    label="Alternativa"
-                                    required="Obligatorio"
-                                />
-                                <FieldInput name="alternativa2" label="Alternativa 2" />
-                            </FormizStep>
-                            <FormizStep name="step3">
-
-                                <FieldInput
-                                    name="otros"
-                                    label="Otros Datos"
-                                    required="Obligatorio"
-                                />
-                                <FieldInput
-                                    name="autonomia"
-                                    label="Autonomia"
-                                    required="Obligatorio"
-                                />
-                                <FieldInput
-                                    name="sob"
-                                    label="Personas a bordo"
-                                    required="Obligatorio"
-                                />
-                                <FieldInput name="remarks" label="Observaciones" />
-
-                                <SignatureCanvas
-                                    name="firma"
-                                    label="Firma"
-                                    required="La firma es obligatoria"
-                                />
-                            </FormizStep>
-                            <Stack spacing="6" mt="8">
-                            <StepperWrapper title="Pasos">
-                                <DotsStepper />
-                            </StepperWrapper>
-                            </Stack>
-                        </form>
-                    </Formiz>
+                  { datos ? 
+                    <>
+                      {datosAcfts ? 
+                          
                     
+                          <Formiz connect={myForm} onValidSubmit={handleSubmit}>
+                              <form noValidate onSubmit={myForm.submitStep}>
+                                  <FormizStep
+                                      name="step1" // Split the form with FormizStep
+                                  >
+                                      
+                                      {acft ? 
+                                          <>
+                                              <Box>
+                                                  <label>ACFT: </label>
+                                                  <label>{acft.matricula}</label>
+                                              </Box>
+                                          </>
+                                          :
+                                          <FieldSelect
+                                              name="matricula"
+                                              label="Elegi una ACFT"
+                                              placeholder="Elegi una Acft"
+                                              required="Requerido"
+                                              keepValue
+                                              acfts={datosAcfts}
+                                              
+                                          />
+      
+                                      }
+                                      <FieldSelect
+                                          name="reglas"
+                                          label="Reglas de Vuelo"
+                                          placeholder="Elegir Reglas"
+                                          required="Requerido"
+                                          keepValue
+                                          options={[
+                                          { value: "I", label: "IFR" },
+                                          { value: "V", label: "VFR" },
+                                          { value: "Y", label: "Y" },
+                                          { value: "Z", label: "Z" },
+                                          ]}
+                                      />
+                                      <FieldSelect
+                                          name="tipo"
+                                          label="Tipo de Vuelo"
+                                          placeholder="Elegir Tipo de vuelo"
+                                          required="Requerido"
+                                          keepValue
+                                          options={[
+                                          { value: "S", label: "S" },
+                                          { value: "N", label: "N" },
+                                          { value: "M", label: "M" },
+                                          { value: "G", label: "G" },
+                                          { value: "X", label: "X" },
+                                          ]}
+                                      />
+                                      
+                                      <FieldInput
+                                          name="salida"
+                                          label="Aeropuerto de salida"
+                                          required="Obligatorio"
+                                      />
+                                      <FieldInput
+                                          name="hora"
+                                          label="Hora de salida"
+                                          required="Obligatorio"
+                                      />
+                                      <FieldInput
+                                          name="nivel"
+                                          label="Nivel de vuelo"
+                                          required="Obligatorio"
+                                      />
+                                      </FormizStep>
+                                      <FormizStep name="step2">
+                                      <FieldInput name="ruta" label="Ruta" required="Obligatorio" />
+                                      <FieldInput
+                                          name="destino"
+                                          label="Destino"
+                                          required="Obligatorio"
+                                      />
+                                      <FieldInput name="eet" label="Total EET" required="Obligatorio" />
+                                      <FieldInput
+                                          name="alternativa1"
+                                          label="Alternativa"
+                                          required="Obligatorio"
+                                      />
+                                      <FieldInput name="alternativa2" label="Alternativa 2" />
+                                  </FormizStep>
+                                  <FormizStep name="step3">
+      
+                                      <FieldInput
+                                          name="otros"
+                                          label="Otros Datos"
+                                          required="Obligatorio"
+                                      />
+                                      <FieldInput
+                                          name="autonomia"
+                                          label="Autonomia"
+                                          required="Obligatorio"
+                                      />
+                                      <FieldInput
+                                          name="sob"
+                                          label="Personas a bordo"
+                                          required="Obligatorio"
+                                      />
+                                      <FieldInput name="remarks" label="Observaciones" />
+      
+                                      <SignatureCanvas
+                                          name="firma"
+                                          label="Firma"
+                                          required="La firma es obligatoria"
+                                      />
+                                  </FormizStep>
+                                  <Stack spacing="6" mt="8">
+                                  <StepperWrapper title="Pasos">
+                                      <DotsStepper />
+                                  </StepperWrapper>
+                                  </Stack>
+                              </form>
+                          </Formiz>
+                          
+                          
+                        
+
                     
-                   </Container> 
+                      :
+                      
+                       <Stack
+                       as={Box}
+                       textAlign={'center'}
+                       spacing={{ base: 8, md: 14 }}
+                       py={{ base: 10, md: 22 }}>
+                      
+                         <Heading
+                          fontWeight={600}
+                          fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
+                          textAlign='center'
+                          
+                          lineHeight={'110%'}>
+                            <Text as={'span'} color={'gray.500'} >
+                                Tenes que cargar por lo menos una ACFT para poder hacer un FPL autocompletado
+                            </Text>
+                       </Heading>
+                          <Link
+                          href={'/ACFTEdit'}
+                          _hover={{
+                            textDecoration: 'none',
+                            
+                          }}
+                         
+                          rounded={'md'}
+                          passhref>
+                            <Button
+                            colorScheme={'green'}
+                            bg={'gray.400'}
+                            rounded={'full'}
+                            px={6}
+                            _hover={{
+                                bg: 'gray.500',
+                            }}>
+                            Carga tus ACFTs
+                            </Button>
+                        </Link>
+                      </Stack>
+                        
+                      }
+                    </> 
+                    :
+                      <Stack
+                      as={Box}
+                      textAlign={'center'}
+                      spacing={{ base: 8, md: 14 }}
+                      py={{ base: 10, md: 22 }}>
+                        
+                        <Heading
+                          fontWeight={600}
+                          fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
+                          textAlign='center'
+                          
+                          lineHeight={'110%'}>
+                          <Text as={'span'} color={'gray.500'} >
+                              Tenes que llenar tus datos para poder hacer un FPL autocompletado
+                          </Text>
+                        </Heading>
+                        <Link
+                        href={'/data'}
+                        _hover={{
+                          textDecoration: 'none',
+                          
+                        }}
+                        
+                        rounded={'md'}
+                        passhref>
+                          <Button
+                          colorScheme={'green'}
+                          bg={'gray.400'}
+                          rounded={'full'}
+                          px={6}
+                          _hover={{
+                              bg: 'gray.500',
+                          }}>
+                          Llena tus datos personales
+                          </Button>
+                      </Link>
+                    </Stack>
+                  }
+                  
                 </>
+                </Container> 
             ):
             <Container maxW={'3xl'}>
                 <Heading

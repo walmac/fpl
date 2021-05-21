@@ -140,17 +140,32 @@ const AcftContainer = ({props}) => {
                         </AccordionItem>
                     </GridItem>
                     <GridItem  >
-                        <Button id={matricula} onClick={(e) => usarACFT(e)}>
+                        <Button id={matricula} onClick={(e) => usarACFT(e)}  bg={'gray.500'}
+                        rounded={'full'}
+                        px={6}
+                        _hover={{
+                            bg: 'gray.600',
+                        }}>
                                 Usar 
                         </Button>
                     </GridItem>
                     <GridItem colStart={3} >
-                        <Button  id={matricula + ' editar'}  onClick={(e) => editarACFT(e)}>
+                        <Button  id={matricula + ' editar'}  onClick={(e) => editarACFT(e)}  bg={'gray.500'}
+                        rounded={'full'}
+                        px={6}
+                        _hover={{
+                            bg: 'gray.600',
+                        }}>
                                 Editar 
                         </Button>
                     </GridItem>
                     <GridItem colEnd={6}>
-                        <Button  id={_id}textColor='red' onClick={(e) => eliminarACFT(e.target.id)}>
+                        <Button  id={_id}textColor='red' onClick={(e) => eliminarACFT(e.target.id)} bg={'gray.500'}
+                        rounded={'full'}
+                        px={6}
+                        _hover={{
+                            bg: 'gray.600',
+                        }}>
                                 Eliminar 
                         </Button>
                     </GridItem>

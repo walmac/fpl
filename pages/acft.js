@@ -51,7 +51,13 @@ const ACFT = () => {
                         Tus ACFTs
                     </Text>
                 </Heading>
-                <Button onClick={() => nuevaACFT()} mb='6'>
+                        <Button onClick={() => nuevaACFT()} mb='6' 
+                        bg={'gray.500'}
+                        rounded={'full'}
+                        px={4}
+                        _hover={{
+                            bg: 'gray.600',
+                        }}>
                                 Nueva ACFT
                         </Button>
                 

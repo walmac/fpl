@@ -102,8 +102,18 @@ const SignatureCanvas = (props) => {
           />
         </div>
         <div>
-          <Button style={{marginTop: 6}}onClick={() => clear()}>Limpiar</Button>
-          <Button style={{marginTop: 6, marginLeft:6}}onClick={() => trim()}>Listo</Button>
+          <Button style={{marginTop: 6}}onClick={() => clear()}  bg={'gray.500'}
+                        rounded={'full'}
+                        px={4}
+                        _hover={{
+                            bg: 'gray.600',
+                        }}>Limpiar</Button>
+          <Button style={{marginTop: 6, marginLeft:6}}onClick={() => trim()}  bg={'gray.500'}
+                        rounded={'full'}
+                        px={4}
+                        _hover={{
+                            bg: 'gray.600',
+                        }}>Listo</Button>
           <h1>Si el cuadro de firma no aparece apretar limpiar, si al terminar no sucede nada, pulsar otra vez listo</h1>
         </div>
         <div style={{marginTop: 4}}>

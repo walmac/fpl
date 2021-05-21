@@ -19,10 +19,11 @@ import authContext from "../../context/auth/authContext";
 export default function CallToActionWithAnnotation() {
 
   const AuthContext = useContext(authContext);
-  const {  usuarioAutenticado, usuario} = AuthContext;
+  const {  usuarioAutenticado, usuario,obtenerDatos, datos } = AuthContext;
 
   useEffect(() => {
    usuarioAutenticado();
+   obtenerDatos();
   }, [])
   return (
     <>
@@ -35,45 +36,90 @@ export default function CallToActionWithAnnotation() {
       </Head>
 
       {usuario ? 
-        (
-            
-            <Stack
-            as={Box}
-            textAlign={'center'}
-            spacing={{ base: 8, md: 14 }}
-            py={{ base: 10, md: 22 }}>
+        (<> {datos ? 
+                <Stack
+                as={Box}
+                textAlign={'center'}
+                spacing={{ base: 8, md: 14 }}
+                py={{ base: 10, md: 22 }}>
+                  
+                <Heading
+                  fontWeight={600}
+                  fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
+                  lineHeight={'110%'}>
+                  
+                  <Text as={'span'} color={'gray.500'}>
+                  Hola {usuario.nombre} 
+                  </Text>
+                </Heading>
+                <Link
+                      href={'/pre'}
+                      _hover={{
+                        textDecoration: 'none',
+                        
+                      }}
+                      props={log}
+                      rounded={'md'}
+                      passhref>
+                        <Button
+                        colorScheme={'green'}
+                        bg={'gray.400'}
+                        rounded={'full'}
+                        px={6}
+                        _hover={{
+                            bg: 'gray.500',
+                        }}>
+                        Rellenar un Fpl con los datos pre cargados
+                        </Button>
+                    </Link>
+                
+                </Stack>
               
-            <Heading
-              fontWeight={600}
-              fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
-              lineHeight={'110%'}>
+                :
+                <>
+                    <Stack
+                as={Box}
+                textAlign={'center'}
+                spacing={{ base: 8, md: 14 }}
+                py={{ base: 10, md: 22 }}>
+                  
+                <Heading
+                  fontWeight={600}
+                  fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
+                  lineHeight={'110%'}>
+                  
+                  <Text as={'span'} color={'gray.500'}>
+                  Hola {usuario.nombre} 
+                  </Text>
+                </Heading>
+                <Link
+                      href={'/data'}
+                      _hover={{
+                        textDecoration: 'none',
+                        
+                      }}
+                      props={log}
+                      rounded={'md'}
+                      passhref>
+                        <Button
+                        colorScheme={'green'}
+                        bg={'gray.400'}
+                        rounded={'full'}
+                        px={6}
+                        _hover={{
+                            bg: 'gray.500',
+                        }}>
+                        Llena tus datos personales
+                        </Button>
+                    </Link>
+                
+                </Stack>
+                </>
               
-              <Text as={'span'} color={'gray.500'}>
-              Hola {usuario.nombre} 
-              </Text>
-            </Heading>
-            <Link
-                  href={'/pre'}
-                  _hover={{
-                    textDecoration: 'none',
-                    
-                  }}
-                  props={log}
-                  rounded={'md'}
-                  passhref>
-                    <Button
-                    colorScheme={'green'}
-                    bg={'gray.400'}
-                    rounded={'full'}
-                    px={6}
-                    _hover={{
-                        bg: 'gray.500',
-                    }}>
-                    Rellenar un Fpl con los datos pre cargados
-                    </Button>
-                </Link>
+              }
+          </>
             
-            </Stack>
+            
         )
         : 
       

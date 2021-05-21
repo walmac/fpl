@@ -148,19 +148,37 @@ const PdfView = (props) => {
                 >
                   Enviar Email
                 </Button> */}
+                 <Stack
+                as={Box}
+                textAlign={'center'}
+                spacing={{ base: 8, md: 14 }}
+                py={{ base: 10, md: 22 }}>
                 {!sending ?<Button  type="submit" // Create a submit button
-                  disabled={!myForm.isValid}>Enviar Email</Button> : 
+                  disabled={!myForm.isValid}
+                  bg={'gray.500'}
+                  rounded={'full'}
+                  px={4}
+                  _hover={{
+                      bg: 'gray.600',
+                  }}>Enviar Email</Button> : 
                   <Button
                     isLoading
                     
                     loadingText="Enviando"
                     colorScheme="grey.400"
                     variant="outline"
+                    bg={'gray.500'}
+                    rounded={'full'}
+                    px={4}
+                    _hover={{
+                        bg: 'gray.600',
+                    }}
                     >Enviar Email
                   </Button>
                     
                     
                   }
+                  </Stack>
                 {/* {!sending ?<Button  type="submit" // Create a submit button
                 disabled={!myForm.isValid}>Envia</Button> : 
                 <Button
