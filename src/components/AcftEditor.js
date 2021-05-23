@@ -94,11 +94,14 @@ const AcftEditor = () => {
   const {
     enviarDatosAcft,
     mensaje,
+    setMensaje,
     setEmergenciaCheck,
     obtenerDatos,
     datos,
     obtenerDatosAcft,
     datosAcfts,
+    cargaTerminada,
+    limpiarCarga
   } = AuthContext;
   const router = useRouter();
   const formizForm = useForm();
@@ -121,12 +124,24 @@ const AcftEditor = () => {
       colorACFT: acft.colorACFT,
       velocidad: acft.velocidad,
       equipoStr: acft.equipoStr,
+      velocidad: acft.velocidad
     });
   }, [acft]);
   useEffect(() => {
     obtenerDatosAcft();
     obtenerDatos();
   }, []);
+
+  useEffect(() => {
+    console.log('entro por carga finalizada');
+    console.log(cargaTerminada);
+    if(cargaTerminada === true){
+        setTimeout(() => {
+          limpiarCarga();
+          router.push('/acft');
+    }, 3000);
+    } 
+  }, [cargaTerminada])
   const enviaDatos = (params) => {
     //console.log(params);
     let equipos = params.equipo;
@@ -151,10 +166,41 @@ const AcftEditor = () => {
     params.equipoStr = equipoStr;
     params.equipoArr = equipoArr;
     params.transponderArr = transponderArr;
+
+    if(  params.matricula === ''
+      || params.tipo === ''
+      || params.equiposArr === ''
+      || params.transponderArr === ''
+      || params.emergencia === ''      
+      || params.estela === ''      
+      || params.colorACFT === ''
+      || params.velocidad === ''
+      || params.equipoStr === ''
+      || params.equipoArr === ''
+      || params.velocidad === ''
+      || params.transponderArr === ''
+      || params.matricula === null
+      || params.tipo === null
+      || params.equiposArr === null
+      || params.transponderArr === null
+      || params.emergencia === null      
+      || params.estela === null      
+      || params.colorACFT === null
+      || params.velocidad === null
+      || params.equipoStr === null
+      || params.equipoArr === null
+      || params.velocidad === null
+      || params.transponderArr === null){
+        setMensaje('Verificar el llenado de los campos');
+        return;
+      }
+
+
+
     enviarDatosAcft(params);
-    setTimeout(() => {
+   /*  setTimeout(() => {
       router.push('/acft')
-    }, 2000);
+    }, 2000); */
   };
 
   const rellenaDatos = () => {

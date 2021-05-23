@@ -11,7 +11,9 @@ import {
          SET_MENSAJE,
          ENVIAR_DATOS_ACFT,
          OBTENER_DATOS_ACFT,
-         ELIMINAR_ACFT
+         ELIMINAR_ACFT,
+         ACFT_CARGADA_CORRECTA,
+         LIMPIAR_CARGA
          
 } from '../../types'
 
@@ -68,6 +70,16 @@ const authReducer =(state, action) => {
                 ...state,
                 datosAcfts : action.payload,
                 
+            }
+        case ACFT_CARGADA_CORRECTA :
+            return{
+                ...state,
+                cargaTerminada : true
+            }
+        case LIMPIAR_CARGA :
+            return{
+                ...state,
+                cargaTerminada : null
             }
         
             

@@ -406,7 +406,7 @@ const Fpl = () => {
         color: rgb(0, 0, 0),
       });
     }
-    if (values.supervivencia === null) {
+    if (values.supervivencia === null || values.supervivencia === '' || values.supervivencia.length === 0) {
       firstPage.drawText("X", {
         x: 128,
         y: 209,
@@ -456,7 +456,7 @@ const Fpl = () => {
       }
     }
 
-    if (values.chalecos === null) {
+    if (values.chalecos === null || values.chalecos === ''||  values.chalecos.length === 0)  {
       firstPage.drawText("X", {
         x: 333,
         y: 208,
@@ -505,7 +505,7 @@ const Fpl = () => {
       }
     }
 
-    if (values.botes === null) {
+    if (values.botes === null || values.botes === '') {
       firstPage.drawText("X", {
         x: 93,
         y: 174,
@@ -548,7 +548,7 @@ const Fpl = () => {
           color: rgb(0, 0, 0),
         });
       }
-      values.capacidad = "22";
+      
       if (values.capacidad.valueOf() < 10) {
         if (values.capacidad.length > 1) {
           firstPage.drawText(values.capacidad, {

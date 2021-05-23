@@ -14,7 +14,9 @@ import {
   SET_MENSAJE,
   ENVIAR_DATOS_ACFT,
   OBTENER_DATOS_ACFT,
- ELIMINAR_ACFT 
+ ELIMINAR_ACFT,
+ ACFT_CARGADA_CORRECTA,
+ LIMPIAR_CARGA
 
 } from "../../types";
 import clienteAxios from "../../config/axios";
@@ -34,7 +36,8 @@ const AuthState = ({ children }) => {
     usuario: null,
     mensaje: null,
     datos: null,
-    datosAcfts: null
+    datosAcfts: null,
+    cargaTerminada : null
   };
 
   //definir el reducer
@@ -248,13 +251,14 @@ const enviarDatosAcft = async datos => {
           type: ENVIAR_DATOS_ACFT,
           payload: res.data.msg,
         });
+        cargaFinalizada();
       } catch (error) {
           console.log(error);
         //console.log(error.response.data.errores[0].msg);
-        /*   dispatch({
+          dispatch({
           type: REGISTRO_ERROR,
           payload: error.response.data.msg
-        });  */
+        });  
       }
       setTimeout(() => {
         dispatch({
@@ -276,6 +280,7 @@ const obtenerDatosAcft = async () => {
           type: OBTENER_DATOS_ACFT,
           payload: res.data.data,
         }); 
+        
       } catch (error) {
           console.log(error.response);
         //console.log(error.response.data.errores[0].msg);
@@ -315,6 +320,19 @@ const eliminarAcft = async datos => {
   }
 }
 
+const cargaFinalizada = () => {
+  dispatch({
+    type : ACFT_CARGADA_CORRECTA
+  });
+
+}
+
+const limpiarCarga = () => {
+  dispatch({
+    type: LIMPIAR_CARGA
+  })
+}
+
   
   
 
@@ -329,6 +347,7 @@ const eliminarAcft = async datos => {
         mensaje: state.mensaje,
         datos: state.datos,
         datosAcfts: state.datosAcfts,
+        cargaTerminada : state.cargaTerminada,
         registrarUsuario,
         iniciarSesion,
         usuarioAutenticado,
@@ -339,6 +358,8 @@ const eliminarAcft = async datos => {
         enviarDatosAcft,
         obtenerDatosAcft,
         eliminarAcft,
+        cargaFinalizada,
+        limpiarCarga,
       }}
     >
       {children}
