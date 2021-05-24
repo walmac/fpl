@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useState,useContext, useEffect} from 'react';
 import {useRouter} from 'next/router';
 
 import PilotData from '../src/ui/PilotData'
@@ -6,45 +6,31 @@ import authContext from "../context/auth/authContext";
 import {FplContext} from '../context/Context';
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
 import {
-    Flex,
     Box,
-    FormControl,
-    FormLabel,
-    Input,
-    Checkbox,
     Stack,
     Link,
     Button,
     Heading,
     Text,
     Container,
-    Accordion,
-    AccordionItem,
-    AccordionIcon,
-    AccordionPanel,
-    AccordionButton,
-    useColorModeValue,
+    Progress,
+    
   } from "@chakra-ui/react";
   import { Formiz, useForm, FormizStep } from "@formiz/core";
   import { StepperWrapper, DotsStepper } from "../src/components/Steppers";
   import { FieldSelect } from "../src/components/FieldSelect";
   import SignatureCanvas from "../src/components/SignatureCanvas";
   import { FieldInput } from "../src/components/FieldInput";
+  import WalkthroughPopover from '../src/ui/WalkthroughPopover';
 
  
-
-
-  
-  
-
-
-
 const Pre = (props) => {
     const AuthContext = useContext(authContext);
     const { autenticado, usuario, obtenerDatos, obtenerDatosAcft, datosAcfts, datos} = AuthContext;
 
     const { setPdf, setCallsign, setBlob, setBytes, acft } = useContext(FplContext);
     const router = useRouter();
+    const [terminar, setTerminar]= useState(false);
     useEffect(() => {
         obtenerDatosAcft();
         obtenerDatos();
@@ -66,12 +52,16 @@ const Pre = (props) => {
    // console.log(props);
    let docUrl;
   let bytes;
+  const help = {
+    text :'Aca podes hacer un plan de vuelo llenando todos los datos correspondientes. Los aeropuertos de salida y destino van en codigo OACI de 4 letras. Si el panel de la firma no aparece apreta limpiar para reiniciarlo. Es un panel tactil donde podes poner tu firma para que aparezca en el PDF que generamos despues..'
+  } 
    
    
 
     const handleSubmit = (params) => {
         
         params.pilot = datos.nombre.toUpperCase() + datos.tipo +' ' + datos.licencia;
+        setTerminar(true);
         console.log(acft);
         let aeronave ;
         datosAcfts.forEach(element => {
@@ -672,6 +662,7 @@ const Pre = (props) => {
         
             {autenticado ? (
               <Container maxW={"3xl"}>
+                <WalkthroughPopover props={help}/>
                 <>
                   { datos ? 
                     <>
@@ -788,6 +779,7 @@ const Pre = (props) => {
                                       />
                                   </FormizStep>
                                   <Stack spacing="6" mt="8">
+                                  {terminar ? <Progress size="xs" isIndeterminate /> : null}
                                   <StepperWrapper title="Pasos">
                                       <DotsStepper />
                                   </StepperWrapper>

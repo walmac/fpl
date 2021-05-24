@@ -74,7 +74,12 @@ export default function NavBar() {
 
   const cierraSesion = () => {
     cerrarSesion();
-    router.push("/");
+    //console.log('cierra sesion');
+    setTimeout(() => {
+      router.push("/");
+    }, 2000);
+    
+    
     
   }
   

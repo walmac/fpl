@@ -28,6 +28,7 @@ import { CheckInput } from "./CheckInput";
 import { CheckJackets } from "./CheckJackets";
 import { CheckSurvival } from "./CheckSurvival";
 import Alert from "./Alert";
+import WalkthroughPopover from '../ui/WalkthroughPopover';
 
 const equipment = [
   { label: "STANDARD", value: "S" },
@@ -106,6 +107,10 @@ const AcftEditor = () => {
   const router = useRouter();
   const formizForm = useForm();
   const { acft } = useContext(FplContext);
+  const help = {
+    text :'Pulsa el boton de rellenar para que se puedan visualizar los datos que ya tenes cargados.'
+  }
+  
 
   useEffect(() => {
     console.log(acft);
@@ -248,9 +253,11 @@ const AcftEditor = () => {
           lineHeight={"110%"}
           textAlign="center"
         >
+          
           {/* <h3>Hola{usuario.nombre},</h3> */}
           {acft ? (
             <Stack>
+              <WalkthroughPopover props={help}/>
               <Text as={"span"} color={"gray.500"}>
                 Edita tu ACFT
               </Text>

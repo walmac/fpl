@@ -1,6 +1,10 @@
 import { extendTheme } from '@chakra-ui/react';
 
+
 export default extendTheme({
+  initialColorMode: "dark",
+  useSystemColorMode: false,
+  
   colors: {
     brand1: {
       50: '#edfdf4',

@@ -20,7 +20,7 @@
     "@react-pdf-viewer/get-file": "^2.4.3",
     "axios": "^0.21.1",
     "babel": "^6.23.0",
-    "framer-motion": "^4.1.13",
+    "framer-motion": "^4.1.17",
     "next": "10.2.0",
     "pdf-lib": "^1.16.0",
     "pdfjs-dist": "2.6.347",

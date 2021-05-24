@@ -23,11 +23,14 @@ import {
   Heading,
   Text,
   Container,
+  Icon,
   useColorModeValue,
 } from "@chakra-ui/react";
 import { FieldInput } from "../src/components/FieldInput";
 import { Formiz, useForm, FormizStep } from "@formiz/core";
 import clienteAxios from "../config/axios";
+import WalkthroughPopover from '../src/ui/WalkthroughPopover';
+
 
 
 const urlMail = "/api/mail";
@@ -42,6 +45,9 @@ const PdfView = (props) => {
   const getFilePluginInstance = getFilePlugin();
   const { Download } = getFilePluginInstance;
   const myForm = useForm();
+  const help = {
+    text :'Aca podes enviarte el Plan de vuelo en formato pdf a tu email. Si no podes visualizarlo podes enviarlo igual y chequearlo alli. Si no se visualiza es porque estas usando algún navegador que no soporta la función.'
+  }
   
 
   const Bajar = () => {
@@ -123,8 +129,30 @@ const PdfView = (props) => {
         </> */
     <>
       <Container maxW={"3xl"}>
+      <WalkthroughPopover props={help}/>
+        
         {pdf ? (
           <>
+           <Stack
+              as={Box}
+              textAlign={'center'}
+              spacing={{ base: 8, md: 12 }}
+              py={{ base: 10, md: 16 }}>
+            <Heading
+                    fontWeight={600}
+                    fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
+                    lineHeight={"110%"}
+                    textAlign='center'
+                    >
+                    <Text as={"span"} color={"gray.500"}>
+                        Tu Fpl
+                    </Text>
+                    
+              </Heading>
+              <Text as={"span"} color={"gray.500"}>
+                        Acá podes previsualizar tu plan de vuelo. Si no aparece se debe a que estas usando un navegador viejo. Aún asi podés enviartelo al mail y verlo. Si no te llega el correo fijate en correo no deseado o spam.
+                    </Text>
+              </Stack>    
             <Formiz connect={myForm} onValidSubmit={sendMail}>
               <form noValidate onSubmit={myForm.submit}>
                 <FieldInput
@@ -248,7 +276,7 @@ const PdfView = (props) => {
               </div>
             </Worker>
             {/* <PDFReader data={pdf}/> */}
-           {/*  <PDFViewer url={blob} /> */}
+            {/* <PDFViewer url={blob} /> */}
           </>
         ) : (
           <h1>Se debe terminar el plan de vuelo primero</h1>

@@ -134,9 +134,11 @@ const AuthState = ({ children }) => {
       
   }
   const cerrarSesion = ()=>{
+
+    //console.log('cierra sesion');
     dispatch({
         type: CERRAR_SESION
-    })
+    });
   }
   
   

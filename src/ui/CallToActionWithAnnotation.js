@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import React , {useContext, useEffect} from 'react';
+import React , {useContext, useEffect, useRef} from 'react';
 import {
   Box,
   Heading,
@@ -10,8 +10,20 @@ import {
   Icon,
   useColorModeValue,
   createIcon,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
+  ButtonGroup,  
   Link
 } from '@chakra-ui/react';
+import { QuestionIcon , QuestionOutlineIcon} from '@chakra-ui/icons';
+import WalkthroughPopover from './WalkthroughPopover';
+
 let log = false;
 
 import authContext from "../../context/auth/authContext";
@@ -24,7 +36,15 @@ export default function CallToActionWithAnnotation() {
   useEffect(() => {
    usuarioAutenticado();
    obtenerDatos();
-  }, [])
+  }, []);
+  const help = {
+    text :'Aca podes elegir entre : Mis Datos que te lleva a rellenar tus datos personales, Mis Acft que te lleva a rellenar datos de las aeronaves que volas regularmente, Rellenar un Fpl que te deja hacer mas facilmente un FPL despues de prellenar los datos personales y de las aeronaves.'
+  }
+  const help1 = {
+    text :'Podes hacer tu cuenta y registrar tus datos y de tus aeronaves para hacer mas rápido el plan de vuelo. Sino podés hacer un plan de vuelo desde cero pulsando el boton FPL.'
+  }
+  
+
   return (
     <>
       <Head>
@@ -37,6 +57,12 @@ export default function CallToActionWithAnnotation() {
 
       {usuario ? 
         (<> {datos ? 
+              <>
+                 {/*  <Stack alignItems='flex-end'>
+                    <QuestionOutlineIcon w={6} h={6} onClick={ () => WalkthroughPopover()}/>
+                  </Stack> */}
+                  <WalkthroughPopover props={help}/>
+                   
                 <Stack
                 as={Box}
                 textAlign={'center'}
@@ -51,6 +77,7 @@ export default function CallToActionWithAnnotation() {
                   <Text as={'span'} color={'gray.500'}>
                   Hola {usuario.nombre} 
                   </Text>
+                  
                 </Heading>
                 <Link
                       href={'/pre'}
@@ -72,8 +99,11 @@ export default function CallToActionWithAnnotation() {
                         Rellenar un Fpl con los datos pre cargados
                         </Button>
                     </Link>
+                    
+                    
                 
                 </Stack>
+                </>
               
                 :
                 <>
@@ -133,6 +163,7 @@ export default function CallToActionWithAnnotation() {
               textAlign={'center'}
               spacing={{ base: 8, md: 14 }}
               py={{ base: 10, md: 36 }}>
+                <WalkthroughPopover props={help1}/>
                 
               <Heading
                 fontWeight={600}

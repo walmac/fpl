@@ -123,7 +123,7 @@ export const FieldSelect = (props) => {
         }
         
       </Select>
-      { props.acfts ? <Button onClick={(e) => ver(e)}
+      {/* { props.acfts ? <Button onClick={(e) => ver(e)}
       mt='2'
        bg={'gray.500'}
        rounded={'full'}
@@ -132,7 +132,7 @@ export const FieldSelect = (props) => {
            bg: 'gray.600',
        }}>
           Llenar
-        </Button> : null}
+        </Button> : null} */}
       
         
       {children}

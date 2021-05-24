@@ -17,12 +17,17 @@ import {
 import authContext from "../context/auth/authContext";
 import AcftContainer from "../src/components/AcftContainer";
 import {useRouter} from 'next/router';
+import WalkthroughPopover from '../src/ui/WalkthroughPopover';
+
 
 
 const ACFT = () => {
     const AuthContext = useContext(authContext);
     const {  mensaje , obtenerDatosAcft, datosAcfts} = AuthContext;
     const router= useRouter();
+    const help = {
+        text :'Aca podes cargar las aeronaves que volás regularmente para poder prellenar un plan de vuelo y hacerlo mas rápido. También podés editarlas y eliminarlas.'
+      }
     useEffect(() => {
         
         obtenerDatosAcft();
@@ -38,6 +43,7 @@ const ACFT = () => {
     return ( 
         <>
             <Container maxW={"3xl"}>
+            <WalkthroughPopover props={help}/>
                 
             {datosAcfts ? 
                 <>
@@ -51,15 +57,21 @@ const ACFT = () => {
                         Tus ACFTs
                     </Text>
                 </Heading>
-                        <Button onClick={() => nuevaACFT()} mb='6' 
-                        bg={'gray.500'}
-                        rounded={'full'}
-                        px={4}
-                        _hover={{
-                            bg: 'gray.600',
-                        }}>
-                                Nueva ACFT
-                        </Button>
+                <Stack
+                    as={Box}
+                    textAlign={'center'}
+                    spacing={{ base: 4, md: 12 }}
+                    py={{ base: 4, md: 16 }}>
+                    <Button onClick={() => nuevaACFT()} mb='2' 
+                    bg={'gray.500'}
+                    rounded={'full'}
+                    px={4}
+                    _hover={{
+                        bg: 'gray.600',
+                    }}>
+                            Nueva ACFT
+                    </Button>
+                </Stack>
                 
                  {datosAcfts.map ( acft =>{
                      return (

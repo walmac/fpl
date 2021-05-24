@@ -18,6 +18,7 @@ import {
   Switch,
   Button,
   Container,
+  Progress
 } from "@chakra-ui/react";
 import { ExternalLinkIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 
@@ -30,6 +31,8 @@ import { CheckJackets } from "../src/components/CheckJackets";
 import { CheckSurvival } from "../src/components/CheckSurvival";
 import { StepperWrapper, DotsStepper } from "../src/components/Steppers";
 import SignatureCanvas from "../src/components/SignatureCanvas";
+import WalkthroughPopover from '../src/ui/WalkthroughPopover';
+
 
 const Fpl = () => {
 
@@ -41,9 +44,13 @@ const Fpl = () => {
 
   const viewer = useRef(null);
   const [sending, setSending] = useState(false);
+  const [terminar, setTerminar]= useState(false);
 
   let docUrl;
   let bytes;
+  const help = {
+    text :'Aca podes hacer un plan de vuelo llenando todos los datos correspondientes. Los aeropuertos de salida y destino van en codigo OACI de 4 letras. Si el panel de la firma no aparece apreta limpiar para reiniciarlo. Es un panel tactil donde podes poner tu firma para que aparezca en el PDF que generamos despues..'
+  }
   let fpl = {
     numero: 1,
     alternativa2: "SAVY",
@@ -80,6 +87,7 @@ const Fpl = () => {
 
   const handleSubmit = (values) => {
     console.log(values);
+    setTerminar(true);
     createFPL(values);
 
     const stepWithError = myForm.getFieldStepName("name");
@@ -662,6 +670,7 @@ const Fpl = () => {
         
       </Grid>
       <Container maxW={'3xl'}>
+      <WalkthroughPopover props={help}/>
       
       <Stack>
       {/* {!sending ?<Button  onClick={() => mandaFpl()}>FPL</Button> : 
@@ -839,6 +848,7 @@ const Fpl = () => {
             </FormizStep>
                 {mensaje && <Alert />}
             <Stack spacing="6" mt="8">
+              {terminar ? <Progress size="xs" isIndeterminate /> : null}
               <StepperWrapper title="Pasos">
                 <DotsStepper />
               </StepperWrapper>

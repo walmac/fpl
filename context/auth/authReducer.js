@@ -55,9 +55,10 @@ const authReducer =(state, action) => {
             return{
                 ...state,
                 usuario : null,
-                autenticado: false,
+                autenticado: null,
                 token: null,
-                datos: null
+                datos: null,
+                datosAcfts : null
             }
         case OBTENER_DATOS_USUARIO:
             return{
