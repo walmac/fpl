@@ -46,7 +46,7 @@ const PdfView = (props) => {
   const { Download } = getFilePluginInstance;
   const myForm = useForm();
   const help = {
-    text :'Aca podes enviarte el Plan de vuelo en formato pdf a tu email. Si no podes visualizarlo podes enviarlo igual y chequearlo alli. Si no se visualiza es porque estas usando algún navegador que no soporta la función.'
+    text :'Aca podes enviarte el Plan de vuelo en formato pdf a tu email. Si no podes visualizarlo podes enviarlo igual y chequearlo alli. Si no se visualiza es porque estas usando algún navegador que no soporta la función. Si el mail no llega fijate en la parte de spam o correo no deseado de tu casilla'
   }
   
 
@@ -73,7 +73,7 @@ const PdfView = (props) => {
       correo[1] === "anac.gov.ar"
     ) {
       setMensaje(
-        "No se puede enviar mail a esos servidores, utilice un correo personal"
+        "No se puede enviar mail a ese servidor, utilice un correo personal"
       );
       return;
     }
@@ -150,7 +150,7 @@ const PdfView = (props) => {
                     
               </Heading>
               <Text as={"span"} color={"gray.500"}>
-                        Acá podes previsualizar tu plan de vuelo. Si no aparece se debe a que estas usando un navegador viejo. Aún asi podés enviartelo al mail y verlo. Si no te llega el correo fijate en correo no deseado o spam.
+                        Acá podés previsualizar tu plan de vuelo. Si no aparece se debe a que estas usando un navegador viejo. Aún asi podés enviartelo al mail y verlo. Si no te llega el correo fijate en correo no deseado o spam.
                     </Text>
               </Stack>    
             <Formiz connect={myForm} onValidSubmit={sendMail}>
@@ -206,6 +206,10 @@ const PdfView = (props) => {
                     
                     
                   }
+                  <Text as={"span"} color={"gray.500"}>
+                        Si te gusto la app podés ayudar al desarrollador invitandole un cafecito
+                    </Text>
+                  <a href='https://cafecito.app/walmac' rel='noopener' target='_blank'><img srcset='https://cdn.cafecito.app/imgs/buttons/button_1.png 1x, https://cdn.cafecito.app/imgs/buttons/button_1_2x.png 2x, https://cdn.cafecito.app/imgs/buttons/button_1_3.75x.png 3.75x' src='https://cdn.cafecito.app/imgs/buttons/button_1.png' alt='Invitame un café en cafecito.app' /></a>
                   </Stack>
                 {/* {!sending ?<Button  type="submit" // Create a submit button
                 disabled={!myForm.isValid}>Envia</Button> : 

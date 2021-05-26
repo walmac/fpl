@@ -108,9 +108,11 @@ const AcftEditor = () => {
   const formizForm = useForm();
   const { acft } = useContext(FplContext);
   const help = {
-    text :'Pulsa el boton de rellenar para que se puedan visualizar los datos que ya tenes cargados.'
+    text :'Pulsa el botón de rellenar para que se puedan visualizar los datos que ya tenés cargados.'
   }
-  
+  const help1 = {
+    text :'Podés hacer tu cuenta, registrar tus datos y  tus aeronaves para hacer mas rápido el plan de vuelo. Sino podés hacer un plan de vuelo desde cero pulsando el boton FPL.'
+  }  
 
   useEffect(() => {
     console.log(acft);

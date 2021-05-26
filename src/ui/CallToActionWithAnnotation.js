@@ -31,17 +31,20 @@ import authContext from "../../context/auth/authContext";
 export default function CallToActionWithAnnotation() {
 
   const AuthContext = useContext(authContext);
-  const {  usuarioAutenticado, usuario,obtenerDatos, datos } = AuthContext;
+  const {  usuarioAutenticado, usuario,obtenerDatos, datos, autenticado } = AuthContext;
 
   useEffect(() => {
-   usuarioAutenticado();
-   obtenerDatos();
+    if(autenticado){   
+      usuarioAutenticado();
+      obtenerDatos();
+    }
   }, []);
+  
   const help = {
-    text :'Aca podes elegir entre : Mis Datos que te lleva a rellenar tus datos personales, Mis Acft que te lleva a rellenar datos de las aeronaves que volas regularmente, Rellenar un Fpl que te deja hacer mas facilmente un FPL despues de prellenar los datos personales y de las aeronaves.'
+    text :'Acá podés elegir entre : Mis Datos, que te lleva a rellenar tus datos personales, Mis Acft que te lleva a rellenar datos de las aeronaves que volas regularmente, Rellenar un Fpl que te deja hacer mas facilmente un FPL despues de prellenar los datos personales y de las aeronaves.'
   }
   const help1 = {
-    text :'Podes hacer tu cuenta y registrar tus datos y de tus aeronaves para hacer mas rápido el plan de vuelo. Sino podés hacer un plan de vuelo desde cero pulsando el boton FPL.'
+    text :'Podés hacer tu cuenta y registrar tus datos y de tus aeronaves para hacer mas rápido el plan de vuelo. Sino podés hacer un plan de vuelo desde cero pulsando el boton FPL.'
   }
   
 
@@ -89,7 +92,7 @@ export default function CallToActionWithAnnotation() {
                       rounded={'md'}
                       passhref>
                         <Button
-                        colorScheme={'green'}
+                        
                         bg={'gray.400'}
                         rounded={'full'}
                         px={6}
@@ -132,7 +135,7 @@ export default function CallToActionWithAnnotation() {
                       rounded={'md'}
                       passhref>
                         <Button
-                        colorScheme={'green'}
+                        
                         bg={'gray.400'}
                         rounded={'full'}
                         px={6}

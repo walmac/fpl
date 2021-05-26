@@ -49,7 +49,7 @@ const Fpl = () => {
   let docUrl;
   let bytes;
   const help = {
-    text :'Aca podes hacer un plan de vuelo llenando todos los datos correspondientes. Los aeropuertos de salida y destino van en codigo OACI de 4 letras. Si el panel de la firma no aparece apreta limpiar para reiniciarlo. Es un panel tactil donde podes poner tu firma para que aparezca en el PDF que generamos despues..'
+    text :'Acá podés hacer un plan de vuelo llenando todos los datos correspondientes. Los aeropuertos de salida y destino van en codigo OACI de 4 letras. Si el panel de la firma no aparece apretá limpiar para reiniciarlo. Es un panel táctil donde podés poner tu firma para que aparezca en el PDF que generamos después..'
   }
   let fpl = {
     numero: 1,

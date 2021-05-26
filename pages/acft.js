@@ -26,7 +26,7 @@ const ACFT = () => {
     const {  mensaje , obtenerDatosAcft, datosAcfts} = AuthContext;
     const router= useRouter();
     const help = {
-        text :'Aca podes cargar las aeronaves que volás regularmente para poder prellenar un plan de vuelo y hacerlo mas rápido. También podés editarlas y eliminarlas.'
+        text :'Acá podés cargar las aeronaves que volás regularmente para poder prellenar un plan de vuelo y hacerlo mas rápido. También podés editarlas y eliminarlas.'
       }
     useEffect(() => {
         
