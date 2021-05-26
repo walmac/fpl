@@ -34,10 +34,11 @@ export default function CallToActionWithAnnotation() {
   const {  usuarioAutenticado, usuario,obtenerDatos, datos, autenticado } = AuthContext;
 
   useEffect(() => {
-    if(autenticado){   
+    if(autenticado){  
       usuarioAutenticado();
-      obtenerDatos();
+      
     }
+    obtenerDatos();
   }, []);
   
   const help = {

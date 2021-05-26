@@ -59,7 +59,7 @@ const AuthState = ({ children }) => {
         payload: res.data.msg,
       });
     } catch (error) {
-        console.log(error.response);
+       // console.log(error.response);
       //console.log(error.response.data.errores[0].msg);
        dispatch({
         type: REGISTRO_ERROR,
@@ -85,13 +85,13 @@ const AuthState = ({ children }) => {
 
             },
           });
-          console.log(res);
+         // console.log(res);
           dispatch({
               type:LOGIN_EXITOSO,
               payload:res.data.token
           })
     } catch (error) {
-        console.log(error);
+       // console.log(error);
 
         dispatch({
             type: LOGIN_ERROR,
@@ -124,7 +124,7 @@ const AuthState = ({ children }) => {
             }
           
       } catch (error) {
-          console.log(error);
+         // console.log(error);
           dispatch({
                 type: LOGIN_ERROR,
                 payload: null,
@@ -158,7 +158,7 @@ const AuthState = ({ children }) => {
           payload: res.data.msg,
         });
       } catch (error) {
-          console.log(error.response);
+          //console.log(error.response);
         //console.log(error.response.data.errores[0].msg);
          /* dispatch({
           type: REGISTRO_ERROR,
@@ -181,13 +181,13 @@ const AuthState = ({ children }) => {
           url: urlDatosUsuario,
          
         });
-        console.log(res.data.data);
+       // console.log(res.data.data);
          dispatch({
           type: OBTENER_DATOS_USUARIO,
           payload: res.data.data,
         }); 
       } catch (error) {
-          console.log(error.response);
+        //  console.log(error.response);
         //console.log(error.response.data.errores[0].msg);
          /* dispatch({
           type: REGISTRO_ERROR,
@@ -214,7 +214,7 @@ const AuthState = ({ children }) => {
 }
 
 const enviarDatosAcft = async datos => {
-    console.log(datos);
+   // console.log(datos);
     let validaBotes ='';
     let validaCap='';
     let validaColor='';
@@ -248,14 +248,14 @@ const enviarDatosAcft = async datos => {
             emergencia: datos.emergencia,
           },
         });
-        console.log(res.data.msg);
+       // console.log(res.data.msg);
         dispatch({
           type: ENVIAR_DATOS_ACFT,
           payload: res.data.msg,
         });
         cargaFinalizada();
       } catch (error) {
-          console.log(error);
+         // console.log(error);
         //console.log(error.response.data.errores[0].msg);
           dispatch({
           type: REGISTRO_ERROR,
@@ -270,21 +270,21 @@ const enviarDatosAcft = async datos => {
 }
 
 const obtenerDatosAcft = async () => {
-    console.log('obteniendo');
+    //console.log('obteniendo');
      try {
         const res = await clienteAxios({
           method: "get",
           url: urlDatosAcft,
          
         });
-        console.log(res.data.data);
+       // console.log(res.data.data);
          dispatch({
           type: OBTENER_DATOS_ACFT,
           payload: res.data.data,
         }); 
         
       } catch (error) {
-          console.log(error.response);
+         // console.log(error.response);
         //console.log(error.response.data.errores[0].msg);
           dispatch({
           type: REGISTRO_ERROR,
@@ -299,7 +299,7 @@ const obtenerDatosAcft = async () => {
 }
 
 const eliminarAcft = async datos => {
-  console.log(datos);
+ // console.log(datos);
   try {
     const res = await clienteAxios({
       method: "post",
@@ -314,7 +314,7 @@ const eliminarAcft = async datos => {
     }); 
     
   } catch (error) {
-    console.log(error);
+   // console.log(error);
     /* dispatch({
       type: REGISTRO_ERROR,
       payload: error.response.data.msg

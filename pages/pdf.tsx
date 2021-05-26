@@ -56,9 +56,7 @@ const PdfView = (props) => {
     name = name + name.concat("FPL -" + callsign.toUpperCase() + ".pdf");
     console.log(name); */
     //download(pdf, name, "application/pdf");
-    console.log("esta?");
-
-    console.log(process.env.NEXT_PUBLIC_BACKEND_URL);
+    
   };
 
   const sendMail = async (params) => {
@@ -66,7 +64,7 @@ const PdfView = (props) => {
       return;
     }
     let correo = params.email.split("@");
-    console.log(correo);
+   // console.log(correo);
     if (
       correo[1] === "eana.com.ar" ||
       correo[1] === "eana.com" ||
@@ -79,7 +77,7 @@ const PdfView = (props) => {
     }
 
     setSending(true);
-    console.log(params);
+   // console.log(params);
     let name = "";
 
     name = name + name.concat("FPL-" + callsign.toUpperCase() + ".pdf");
@@ -108,14 +106,14 @@ const PdfView = (props) => {
           filename: name,
         },
       }).then((response) => {
-        console.log(response.data.status);
+      //  console.log(response.data.status);
         setSending(false);
         setMensaje(response.data.status);
         
         
       });
     } catch (error) {
-      console.log(error);
+     // console.log(error);
     }
   };
 

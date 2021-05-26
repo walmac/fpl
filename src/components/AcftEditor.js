@@ -115,7 +115,7 @@ const AcftEditor = () => {
   }  
 
   useEffect(() => {
-    console.log(acft);
+    //console.log(acft);
     formizForm.setFieldsValues({
       matricula: acft.matricula,
       tipo: acft.tipo,
@@ -140,8 +140,8 @@ const AcftEditor = () => {
   }, []);
 
   useEffect(() => {
-    console.log('entro por carga finalizada');
-    console.log(cargaTerminada);
+   // console.log('entro por carga finalizada');
+   // console.log(cargaTerminada);
     if(cargaTerminada === true){
         setTimeout(() => {
           limpiarCarga();
@@ -157,7 +157,7 @@ const AcftEditor = () => {
     let equipoStr = "";
     let equipoArr = [];
     let transponderArr = [];
-    console.log(params);
+    //console.log(params);
     equipos.forEach((element) => {
       equipoStr = equipoStr + element.value;
       equipoArr.push(element.value);
@@ -167,9 +167,9 @@ const AcftEditor = () => {
       equipoStr = equipoStr + element.value;
       transponderArr.push(element.value);
     });
-    console.log(equipoStr);
+   /*  console.log(equipoStr);
     console.log(transponderArr);
-    console.log(equipoArr);
+    console.log(equipoArr); */
     params.equipoStr = equipoStr;
     params.equipoArr = equipoArr;
     params.transponderArr = transponderArr;
