@@ -714,11 +714,11 @@ const Pre = (props) => {
                                           required="Requerido"
                                           keepValue
                                           options={[
-                                          { value: "S", label: "S" },
-                                          { value: "N", label: "N" },
-                                          { value: "M", label: "M" },
-                                          { value: "G", label: "G" },
-                                          { value: "X", label: "X" },
+                                            { value: "S", label: "S - Comercial Regular" },
+                                            { value: "N", label: "N - Comercial No Regular" },
+                                            { value: "M", label: "M - Militar" },
+                                            { value: "G", label: "G - General" },
+                                            { value: "X", label: "X - Otro" },
                                           ]}
                                       />
                                       
