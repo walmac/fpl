@@ -60,11 +60,11 @@ export default function NavBar() {
   const router = useRouter();
   const { colorMode, toggleColorMode } = useColorMode();
   const AuthContext = useContext(authContext);
-  const { autenticado, usuarioAutenticado, cerrarSesion} = AuthContext;
+  const { autenticado, usuarioAutenticado, cerrarSesion } = AuthContext;
 
   useEffect(() => {
     usuarioAutenticado();
-  }, [])
+  }, []);
   const getUrl = (name) => {};
   const goToFpl = () => {
     console.log("pulso");
@@ -78,11 +78,7 @@ export default function NavBar() {
     setTimeout(() => {
       router.push("/");
     }, 2000);
-    
-    
-    
-  }
-  
+  };
 
   return (
     <>
@@ -111,7 +107,7 @@ export default function NavBar() {
               spacing={4}
               display={{ base: "none", md: "flex" }}
             >
-              {autenticado ? 
+              {/* {autenticado ? 
                 <HStack>
                   <Link
                       px={2}
@@ -166,7 +162,7 @@ export default function NavBar() {
                         Crear Cuenta
                       </Link>
                   </HStack>
-                }
+                } */}
             </HStack>
           </HStack>
           <Flex alignItems={"center"}>
@@ -189,7 +185,7 @@ export default function NavBar() {
                 FPL
               </Button>
             </Link>
-            {autenticado ? 
+            {autenticado ? (
               <Button
                 variant={"solid"}
                 /* colorScheme={'blend'} */
@@ -198,13 +194,12 @@ export default function NavBar() {
                 mr={4}
                 rightIcon={<CloseIcon />}
                 target="_blank"
-                onClick={ () => cierraSesion()}
+                onClick={() => cierraSesion()}
                 display={{ base: "none", md: "flex" }}
               >
                 CERRAR SESION
               </Button>
-              : null
-            }
+            ) : null}
             <Box style={{ textAlign: "end" }}>
               <Stack direction="row" align="center" mb="0" mt="0">
                 <MoonIcon
@@ -226,82 +221,80 @@ export default function NavBar() {
           </Flex>
         </Flex>
 
-        {isOpen ? (
+        {/* {isOpen ? (
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
-              {autenticado ? 
+              {autenticado ? (
                 <Stack>
                   <Link
-                      px={2}
-                      py={1}
-                      rounded={"md"}
-                      _hover={{
-                        textDecoration: "none",
-                        bg: useColorModeValue("gray.200", "gray.700"),
-                      }}
-                      href={"/data"}
-                    >
-                      Mis Datos
-                    </Link>
-                    <Link
-                      px={2}
-                      py={1}
-                      rounded={"md"}
-                      _hover={{
-                        textDecoration: "none",
-                        bg: useColorModeValue("gray.200", "gray.700"),
-                      }}
-                      href={"/acft"}
-                    >
-                      Mis ACFTs
-                    </Link>
-                    <Link
-                        px={2}
-                        py={1}
-                        rounded={"md"}
-                        _hover={{
-                          textDecoration: "none",
-                          bg: useColorModeValue("gray.200", "gray.700"),
-                        }}
-                        href={"#"}
-                        onClick={ () => cierraSesion()}
-                      >
-                        Cerrar Sesión
-                      </Link>
+                    px={2}
+                    py={1}
+                    rounded={"md"}
+                    _hover={{
+                      textDecoration: "none",
+                      bg: useColorModeValue("gray.200", "gray.700"),
+                    }}
+                    href={"/data"}
+                  >
+                    Mis Datos
+                  </Link>
+                  <Link
+                    px={2}
+                    py={1}
+                    rounded={"md"}
+                    _hover={{
+                      textDecoration: "none",
+                      bg: useColorModeValue("gray.200", "gray.700"),
+                    }}
+                    href={"/acft"}
+                  >
+                    Mis ACFTs
+                  </Link>
+                  <Link
+                    px={2}
+                    py={1}
+                    rounded={"md"}
+                    _hover={{
+                      textDecoration: "none",
+                      bg: useColorModeValue("gray.200", "gray.700"),
+                    }}
+                    href={"#"}
+                    onClick={() => cierraSesion()}
+                  >
+                    Cerrar Sesión
+                  </Link>
                 </Stack>
-                :
-                  <Stack>
-                    <Link
-                        px={2}
-                        py={1}
-                        rounded={"md"}
-                        _hover={{
-                          textDecoration: "none",
-                          bg: useColorModeValue("gray.200", "gray.700"),
-                        }}
-                        href={"/signin"}
-                      >
-                        Acceder
-                      </Link>
-                      <Link
-                        px={2}
-                        py={1}
-                        rounded={"md"}
-                        _hover={{
-                          textDecoration: "none",
-                          bg: useColorModeValue("gray.200", "gray.700"),
-                        }}
-                        href={"/signup"}
-                      >
-                        Crear Cuenta
-                      </Link>
-                      
-                  </Stack>
-                }
-              
+              ) : (
+                <Stack>
+                  <Link
+                    px={2}
+                    py={1}
+                    rounded={"md"}
+                    _hover={{
+                      textDecoration: "none",
+                      bg: useColorModeValue("gray.200", "gray.700"),
+                    }}
+                    href={"/signin"}
+                  >
+                    Acceder
+                  </Link>
+                  <Link
+                    px={2}
+                    py={1}
+                    rounded={"md"}
+                    _hover={{
+                      textDecoration: "none",
+                      bg: useColorModeValue("gray.200", "gray.700"),
+                    }}
+                    href={"/signup"}
+                  >
+                    Crear Cuenta
+                  </Link>
+                </Stack>
+              )}
             </Stack>
           </Box>
-        ) : null}
+        ) : null} */}
       </Box>
     </>
   );

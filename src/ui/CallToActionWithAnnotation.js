@@ -1,5 +1,5 @@
-import Head from 'next/head';
-import React , {useContext, useEffect, useRef} from 'react';
+import Head from "next/head";
+import React, { useContext, useEffect, useRef } from "react";
 import {
   Box,
   Heading,
@@ -18,36 +18,34 @@ import {
   PopoverFooter,
   PopoverArrow,
   PopoverCloseButton,
-  ButtonGroup,  
-  Link
-} from '@chakra-ui/react';
-import { QuestionIcon , QuestionOutlineIcon} from '@chakra-ui/icons';
-import WalkthroughPopover from './WalkthroughPopover';
+  ButtonGroup,
+  Link,
+} from "@chakra-ui/react";
+import { QuestionIcon, QuestionOutlineIcon } from "@chakra-ui/icons";
+import WalkthroughPopover from "./WalkthroughPopover";
 
 let log = false;
 
 import authContext from "../../context/auth/authContext";
 
 export default function CallToActionWithAnnotation() {
-
   const AuthContext = useContext(authContext);
-  const {  usuarioAutenticado, usuario,obtenerDatos, datos, autenticado } = AuthContext;
+  const { usuarioAutenticado, usuario, obtenerDatos, datos, autenticado } =
+    AuthContext;
 
   useEffect(() => {
-    if(autenticado){  
+    if (autenticado) {
       usuarioAutenticado();
-      
     }
     obtenerDatos();
   }, []);
-  
+
   const help = {
-    text :'Acá podés elegir entre : Mis Datos, que te lleva a rellenar tus datos personales, Mis Acft que te lleva a rellenar datos de las aeronaves que volas regularmente, Rellenar un Fpl que te deja hacer mas facilmente un FPL despues de prellenar los datos personales y de las aeronaves.'
-  }
+    text: "Acá podés elegir entre : Mis Datos, que te lleva a rellenar tus datos personales, Mis Acft que te lleva a rellenar datos de las aeronaves que volas regularmente, Rellenar un Fpl que te deja hacer mas facilmente un FPL despues de prellenar los datos personales y de las aeronaves.",
+  };
   const help1 = {
-    text :'Podés hacer tu cuenta y registrar tus datos y de tus aeronaves para hacer mas rápido el plan de vuelo. Sino podés hacer un plan de vuelo desde cero pulsando el boton FPL.'
-  }
-  
+    text: "Podés  hacer un plan de vuelo desde cero pulsando el boton FPL o pulsando Empezar.",
+  };
 
   return (
     <>
@@ -56,181 +54,178 @@ export default function CallToActionWithAnnotation() {
           href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap"
           rel="stylesheet"
         />
-        <script data-ad-client="ca-pub-9578188952571749" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script
+          data-ad-client="ca-pub-9578188952571749"
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+        ></script>
       </Head>
 
-      {usuario ? 
-        (<> {datos ? 
-              <>
-                 {/*  <Stack alignItems='flex-end'>
+      {usuario ? (
+        <>
+          {" "}
+          {datos ? (
+            <>
+              {/*  <Stack alignItems='flex-end'>
                     <QuestionOutlineIcon w={6} h={6} onClick={ () => WalkthroughPopover()}/>
                   </Stack> */}
-                  <WalkthroughPopover props={help}/>
-                   
-                <Stack
-                as={Box}
-                textAlign={'center'}
-                spacing={{ base: 8, md: 14 }}
-                py={{ base: 10, md: 22 }}>
-                  
-                <Heading
-                  fontWeight={600}
-                  fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
-                  lineHeight={'110%'}>
-                  
-                  <Text as={'span'} color={'gray.500'}>
-                  Hola {usuario.nombre} 
-                  </Text>
-                  
-                </Heading>
-                <Link
-                      href={'/pre'}
-                      _hover={{
-                        textDecoration: 'none',
-                        
-                      }}
-                      props={log}
-                      rounded={'md'}
-                      passhref>
-                        <Button
-                        
-                        bg={'gray.400'}
-                        rounded={'full'}
-                        px={6}
-                        _hover={{
-                            bg: 'gray.500',
-                        }}>
-                        Rellenar un Fpl con los datos pre cargados
-                        </Button>
-                    </Link>
-                    
-                    
-                
-                </Stack>
-                </>
-              
-                :
-                <>
-                    <Stack
-                as={Box}
-                textAlign={'center'}
-                spacing={{ base: 8, md: 14 }}
-                py={{ base: 10, md: 22 }}>
-                  
-                <Heading
-                  fontWeight={600}
-                  fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
-                  lineHeight={'110%'}>
-                  
-                  <Text as={'span'} color={'gray.500'}>
-                  Hola {usuario.nombre} 
-                  </Text>
-                </Heading>
-                <Link
-                      href={'/data'}
-                      _hover={{
-                        textDecoration: 'none',
-                        
-                      }}
-                      props={log}
-                      rounded={'md'}
-                      passhref>
-                        <Button
-                        
-                        bg={'gray.400'}
-                        rounded={'full'}
-                        px={6}
-                        _hover={{
-                            bg: 'gray.500',
-                        }}>
-                        Llena tus datos personales
-                        </Button>
-                    </Link>
-                
-                </Stack>
-                </>
-              
-              }
-          </>
-            
-            
-        )
-        : 
-      
-        (
-          <>
-            <Container maxW={'3xl'}>
-            
-                  
-            <Stack
-              as={Box}
-              textAlign={'center'}
-              spacing={{ base: 8, md: 14 }}
-              py={{ base: 10, md: 36 }}>
-                <WalkthroughPopover props={help1}/>
-                
-              <Heading
-                fontWeight={600}
-                fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
-                lineHeight={'110%'}>
-                Hace el Plan de vuelo <br />
-                <Text as={'span'} color={'gray.500'}>
-                con esta app
-                </Text>
-              </Heading>
-              <Text color={'gray.500'}>
-                Es muy facil, desde el boton FPL arriba a la derecha podes llenar todos los datos del FPL y al final tendras un formulario hecho en un PDF listo para enviar. Podes tambien hacer una cuenta, guardar tus datos y ACFTs que volas frecuentemente para habilitar un prellenado del FPL con dichos datos
-              </Text>
+              <WalkthroughPopover props={help} />
+
               <Stack
-                direction={'column'}
-                spacing={3}
-                align={'center'}
-                alignSelf={'center'}
-                position={'relative'}>
+                as={Box}
+                textAlign={"center"}
+                spacing={{ base: 8, md: 14 }}
+                py={{ base: 10, md: 22 }}
+              >
+                <Heading
+                  fontWeight={600}
+                  fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
+                  lineHeight={"110%"}
+                >
+                  <Text as={"span"} color={"gray.500"}>
+                    Hola {usuario.nombre}
+                  </Text>
+                </Heading>
                 <Link
-                  href={'/signin'}
+                  href={"/pre"}
                   _hover={{
-                    textDecoration: 'none',
-                    
+                    textDecoration: "none",
                   }}
                   props={log}
-                  rounded={'md'}
-                  passhref>
-                    <Button
-                    colorScheme={'green'}
-                    bg={'gray.400'}
-                    rounded={'full'}
+                  rounded={"md"}
+                  passhref
+                >
+                  <Button
+                    bg={"gray.400"}
+                    rounded={"full"}
                     px={6}
                     _hover={{
-                        bg: 'gray.500',
-                    }}>
+                      bg: "gray.500",
+                    }}
+                  >
+                    Rellenar un Fpl con los datos pre cargados
+                  </Button>
+                </Link>
+              </Stack>
+            </>
+          ) : (
+            <>
+              <Stack
+                as={Box}
+                textAlign={"center"}
+                spacing={{ base: 8, md: 14 }}
+                py={{ base: 10, md: 22 }}
+              >
+                <Heading
+                  fontWeight={600}
+                  fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
+                  lineHeight={"110%"}
+                >
+                  <Text as={"span"} color={"gray.500"}>
+                    Hola {usuario.nombre}
+                  </Text>
+                </Heading>
+                <Link
+                  href={"/data"}
+                  _hover={{
+                    textDecoration: "none",
+                  }}
+                  props={log}
+                  rounded={"md"}
+                  passhref
+                >
+                  <Button
+                    bg={"gray.400"}
+                    rounded={"full"}
+                    px={6}
+                    _hover={{
+                      bg: "gray.500",
+                    }}
+                  >
+                    Llena tus datos personales
+                  </Button>
+                </Link>
+              </Stack>
+            </>
+          )}
+        </>
+      ) : (
+        <>
+          <Container maxW={"3xl"}>
+            <Stack
+              as={Box}
+              textAlign={"center"}
+              spacing={{ base: 8, md: 14 }}
+              py={{ base: 10, md: 36 }}
+            >
+              <WalkthroughPopover props={help1} />
+
+              <Heading
+                fontWeight={600}
+                fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
+                lineHeight={"110%"}
+              >
+                Hace el Plan de vuelo <br />
+                <Text as={"span"} color={"gray.500"}>
+                  con esta app
+                </Text>
+              </Heading>
+              <Text color={"gray.500"}>
+                Es muy facil, desde el boton FPL arriba a la derecha podes
+                llenar todos los datos del FPL y al final tendras un formulario
+                hecho en un PDF listo para enviar. Sino podes hacer click aca y
+                empezar tu plan de vuelo
+              </Text>
+              <Stack
+                direction={"column"}
+                spacing={3}
+                align={"center"}
+                alignSelf={"center"}
+                position={"relative"}
+              >
+                <Link
+                  href={"/fpl"}
+                  _hover={{
+                    textDecoration: "none",
+                  }}
+                  props={log}
+                  rounded={"md"}
+                  passhref
+                >
+                  <Button
+                    colorScheme={"green"}
+                    bg={"gray.400"}
+                    rounded={"full"}
+                    px={6}
+                    _hover={{
+                      bg: "gray.500",
+                    }}
+                  >
                     Empezar
-                    </Button>
+                  </Button>
                 </Link>
                 <Box>
                   <Icon
                     as={Arrow}
-                    color={useColorModeValue('gray.800', 'gray.300')}
+                    color={useColorModeValue("gray.800", "gray.300")}
                     w={71}
-                    position={'absolute'}
+                    position={"absolute"}
                     right={-71}
-                    top={'10px'}
+                    top={"10px"}
                   />
-                  
-                  </Box>
-                </Stack>
+                </Box>
               </Stack>
-            </Container>
-          </>
-        )
-      }
+            </Stack>
+          </Container>
+        </>
+      )}
     </>
   );
 }
 
 const Arrow = createIcon({
-  displayName: 'Arrow',
-  viewBox: '0 0 72 24',
+  displayName: "Arrow",
+  viewBox: "0 0 72 24",
   path: (
     <path
       fillRule="evenodd"
